@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hotel Search</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300|Open+Sans:700" />
+    <link rel="stylesheet" href="hotel.css" />
+
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <script type="text/javascript">
+        function showCategories()
+        {
+            var chooser = document.getElementById("hotelChooser");
+            var output  = "<p><strong>You chose:";
+
+            for (i = 0; i < chooser.length; i++) {
+               if (chooser[i].selected) {
+                   output += " " + chooser[i].value;
+               }
+            }
+
+            output += "</strong></p>";
+            document.getElementById("outputDiv").innerHTML = output;
+        }
+    </script>
+    <script>
+    $(function() {
+      $("#category").selectable();
+    });
+    </script>
+</head>
+
+<body>
+<div class="page">
+
+{{> header}}
+<h1>{{pageTitle}}</h1>
+<h1>Personalized Hotel Recommendations</h1>
+    <p class="logo"><a href="/"><img src="logo2.png"  alt="Marianne" /></a></p>
+
+{{> footer}}
+
+<div class="sidebar">
+
+Top 20 hotels
+
+
+    <div id="outputDiv">
+            <p></p>
+    </div>
+
+</div> <!-- end sidebar -->
+
+</div> <!-- end page -->
+
+</body>
+</html>

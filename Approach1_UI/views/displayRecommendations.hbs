@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <title>List of Hotels</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300|Open+Sans:700" />
+    <link rel="stylesheet" href="hotel.css" />
+</head>
+<body>
+<div class="page">
+{{> header}}
+
+<h1>{{pageTitle}}</h1>
+
+<h3> {{recommendation}}
+</h3>
+
+<table border="1">
+    <tr>
+        <th>Hotel Name</th>
+        <th>Breakfast</th>
+        <th>Bed</th>
+        <th>Location</th>
+        <th>Metro</th>
+        <th>Minute W</th>
+        <th>Clean</th>
+        <th>Staff</th>
+        <th>Tube</th>
+        <th>Value</th>
+        <th>Walk</th>
+        <th>Average Rating</th>
+        <th>Compare rt</th>
+        <th>Combined Rating</th>
+        <th>Total Reviews</th>
+        <th>Compare popularity</th>
+        <th>Address</th>
+    </tr>
+
+    {{#each docs}}
+        <tr>
+            <td>{{this.Hotel_Name}}</td>
+            <td>{{this.breakfast_good}}</td>
+            <td>{{this.comfortable_bed}}</td>
+            <td>{{this.great_location}}</td>
+            <td>{{this.metro_station}}</td>
+            <td>{{this.minute_walk}}</td>
+            <td>{{this.room_clean}}</td>
+            <td>{{staff_friendly}}</td>
+            <td>{{tube_station}}</td>
+            <td>{{value_money}}</td>
+            <td>{{walking_distance}}</td>
+            <td>{{this.Average_Score}}</td>
+            <td id = "red" > {{this.diff_avg}}</td>
+            <td>{{this.c_rating}}</td>
+            <td>{{this.Total_Number_of_Reviews}}</td>
+            <td id = "red" >{{this.diff_pop}}</td>
+            <td>{{this.Hotel_Address}}</td>
+        </tr>
+    {{/each}}
+</table>
+
+<p>
+  Average Score of all hotels:<strong>8.4</strong>
+  Average total # of reviews: <strong>2748</strong>
+</p>
+{{> footer}}
+</div> <!-- end page -->
+</body>
+</html>

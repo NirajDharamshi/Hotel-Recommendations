@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hotel Search</title>
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300|Open+Sans:700" />
+    <link rel="stylesheet" href="hotel.css" />
+
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <script type="text/javascript">
+    window.ShowCategories = function()
+    //    function showCategories()
+        {
+            var chooser = document.getElementById("hotelChooser");
+            var output  = "<p><strong>You chose:";
+
+            for (i = 0; i < chooser.length; i++) {
+               if (chooser[i].selected) {
+                   output += " " + chooser[i].value;
+                //   sql += " " + chooser[i].value;
+
+
+                if (chooser[i].value == "breakfast_good") {
+                  document.form1.breakfast_good.value = "1";
+                }
+
+                if (chooser[i].value == "comfortable_bed") {
+                  document.form1.comfortable_bed.value = "1";
+                }
+
+                if (chooser[i].value == "great_location") {
+                  document.form1.great_location.value = "1";
+                }
+
+                if (chooser[i].value == "metro_station") {
+                  document.form1.metro_station.value = "1";
+                }
+
+                if (chooser[i].value == "minute_walk") {
+                  document.form1.minute_walk.value = "1";
+                }
+
+                if (chooser[i].value == "room_clean") {
+                  document.form1.room_clean.value = "1";
+                }
+
+                if (chooser[i].value == "staff_friendly") {
+                  document.form1.staff_friendly.value = "1";
+                }
+
+                if (chooser[i].value == "tube_station") {
+                  document.form1.tube_station.value = "1";
+                }
+
+                if (chooser[i].value == "value_money") {
+                  document.form1.value_money.value = "1";
+                }
+
+                if (chooser[i].value == "walking_distance") {
+                  document.form1.walking_distance.value = "1";
+                }
+
+
+               }
+            }
+
+        }
+    </script>
+    <script>
+    $(function() {
+      $("#category").selectable();
+    });
+</script>
+    <script type="text/javascript">
+        function showSelection()
+        {
+            var chooser = document.getElementById("hotelChooser");
+            var output  = "<p><strong>You selected: ";
+
+            for (i = 0; i < chooser.length; i++) {
+               if (chooser[i].selected) {
+                   output += " " + chooser[i].value;
+               }
+            }
+
+            output += "</strong></p>";
+            document.getElementById("outputDiv").innerHTML = output;
+        }
+    </script>
+
+</head>
+
+<body>
+<div class="page">
+
+{{> header}}
+<h1>{{pageTitle}}</h1>
+<h1>Personalized Hotel Recommendations</h1>
+    <p class="logo"><a href="/"><img src="logo.png"  alt="Marianne" /></a></p>
+
+{{> footer}}
+
+<div class="sidebar">
+
+
+<form name="form1" id="form1" method='post' onsubmit="return ShowCategories();" action='/get_recommendation'>
+
+  <input type="hidden" name="breakfast_good" id="breakfast_good" value=0 />
+  <input type="hidden" name="comfortable_bed" id="comfortable_bed" value=0 />
+  <input type="hidden" name="great_location" id="great_location" value=0 />
+  <input type="hidden" name="metro_station" id="metro_station" value=0 />
+  <input type="hidden" name="minute_walk" id="minute_walk" value=0 />
+  <input type="hidden" name="room_clean" id="room_clean" value=0 />
+  <input type="hidden" name="staff_friendly" id="staff_friendly" value=0 />
+  <input type="hidden" name="tube_station" id="tube_station" value=0 />
+  <input type="hidden" name="value_money" id="value_money" value=0 />
+  <input type="hidden" name="walking_distance" id="walking_distance" value=0 />
+
+  <fieldset>
+  <legend>Select what is important</legend>
+  <p>
+      <select id="hotelChooser"
+              size = "10" multiple="multiple">
+          <option value="breakfast_good">Great Breakfast</option>
+          <option  value="comfortable_bed">Comfortable Bed</option>
+          <option  value="great_location">Great Location</option>
+          <option  value="metro_station">Close to Metro Station</option>
+          <option  value="minute_walk">Minute walk to everything</option>
+          <option  value="room_clean">Cleanliness of room</option>
+          <option  value="staff_friendly">Friendly Staff</option>
+          <option  value="tube_station">Close to tube station</option>
+          <option  value="value_money">Best value for your money</option>
+          <option value="walking_distance">Walking Distance to everything</option>
+
+      </select>
+      <p>
+
+      <input type = "button"
+                  value = "Show Selections"
+                  onclick="showSelection()" />
+
+       <button type = "submit"
+                  value = "Enter" >
+                            Submit
+       </button>
+    </p>
+  </p>
+</fieldset>
+
+
+    </form>
+
+  <div id = "outputDiv">
+    <p></p>
+  </div>
+
+
+</div> <!-- end sidebar -->
+
+</div> <!-- end page -->
+
+</body>
+</html>
