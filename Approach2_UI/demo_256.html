@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{%  block title %}256 demo{% endblock %}
+
+{%  block content %}
+
+ <div class="jumbotron">
+        <h1>Hotel Recommendation</h1>
+        <form action = {{ url_for('demo_256') }} enctype="multipart/form-data" method="POST">
+        <label for="location" class="demo_256">City</label>
+        <select name="location">
+            <option value="London">London</option>
+            <option value="Amsterdam">Amsterdam</option>
+            <option value="Barcelona">Barcelona</option>
+            <option value="Vienna">Vienna</option>
+            <option value="Paris">Paris</option>
+            <option value="Milan">Milan</option>
+        </select>
+
+
+        <button id='btn_submit' class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+      </form>
+      </div>
+
+{% endblock %}
